@@ -1,0 +1,16 @@
+all: build
+
+build: setaria.img
+
+setaria.img: boot
+	cat ./arch/x86/boot/bootloader.bin > $@
+
+boot:
+	$(MAKE) -C ./arch/x86/boot
+
+run: build
+	qemu-system-x86_64 -L . -m 64 -fda ./setaria.img -localtime -M pc
+
+clean:
+	$(MAKE) -C ./arch/x86/boot clean
+	rm -rf ./setaria.img

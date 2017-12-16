@@ -1,0 +1,11 @@
+all: bootloader.bin
+
+bootloader.bin: bootloader.o
+	cat $^ > $@
+
+bootloader.o: bootloader.asm
+	nasm -o $@ $^
+
+clean:
+	rm -rf *.bin
+	rm -rf *.o
