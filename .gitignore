@@ -1,0 +1,19 @@
+*.bin
+*.o
+*.img
+
+# Windows
+*.bat
+
+# POSIX
+*.sh
+
+# Visual Studio
+.vs/
+*.sln
+*.vcxproj
+*.filters
+*.user
+
+# Make
+makefile
