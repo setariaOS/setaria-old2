@@ -6,6 +6,13 @@ import sys
 platform = "(NULL)"
 firmware = "(NULL)"
 
+can_delete_files = [ "./makefile", "./run.bat", "./run.sh",
+					 "./arch/x86/boot/makefile" ]
+
+def delete_files():
+	for path in can_delete_files:
+		delete_file(path)
+
 def is_number(string):
 	try:
 		int(string)
@@ -119,6 +126,27 @@ def do_action3():
 		input()
 		return
 
+	if os.path.isfile("./makefile") or os.path.isfile("./arch/x86/boot/makefile"):
+		print("It seems the build environment has already been established.")
+		print("Do you want to continue? [Y/N]")
+		print()
+
+		loop = True
+		while loop:
+			print(">>> ", end="")
+			y_or_n = input()
+			if y_or_n == "Y" or y_or_n == "y":
+				loop = False
+				print()
+
+				delete_files()
+			elif y_or_n == "N" or y_or_n == "n":
+				loop = False
+				return
+			else:
+				print("Unknown value. Please retry.")
+				print()
+
 	if platform == "x86-64":
 		error = do_action3_x86_64(firmware)
 		if error:
@@ -148,11 +176,7 @@ def do_action4():
 	print()
 	data_print()
 
-	delete_file("./arch/x86/boot/makefile")
-	delete_file("./makefile")
-
-	delete_file("./run.bat")
-	delete_file("./run.sh")
+	delete_files()
 
 	print("Done!")
 
