@@ -138,7 +138,7 @@ def do_action3_x86_64(firmware):
 	copy_to("./make/x86", "root", "./", "makefile")
 
 	if firmware == "BIOS":
-		copy_to("./make/x86-64", "boot_bios", "./arch/x86/boot", "makefile")
+		copy_to("./make/x86", "boot64_bios", "./arch/x86/boot", "makefile")
 
 	return False
 
