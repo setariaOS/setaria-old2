@@ -7,4 +7,4 @@ Operating System for x86
 
 ## Copyright
 - Code: MIT License
-- Logo: (C) 2017. [李](https://github.com/Lee0701) All rights reserved
+- Logo: (C) 2017-2018. [李](https://github.com/Lee0701) All rights reserved
