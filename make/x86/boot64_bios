@@ -1,9 +1,16 @@
 all: bootloader.bin
 
-bootloader.bin: bootloader.o
+bootloader.bin: bootloader.o loader.bin
 	cat $^ > $@
 
 bootloader.o: bootloader.asm
+	nasm -o $@ $^
+
+loader.bin: loader64.o
+	cat $^ > $@
+	python ./entrypoint_align.py
+
+loader64.o: loader64.asm
 	nasm -o $@ $^
 
 clean:

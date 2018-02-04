@@ -36,12 +36,12 @@ bootloader16_disk_read:
 	mov ax, 0x0800
 	mov es, ax
 	mov bx, 0x0000
-
+.loop:
 	mov ah, 0x02
 	mov al, 0x01
 	mov ch, 0x00
 	mov dx, 0x00
-.loop:
+
 	mov cl, byte[bootloader16_variable_sector]
 	int 0x13
 	jc bootloader16_error
@@ -50,13 +50,12 @@ bootloader16_disk_read:
 	add bx, 512
 
 	cmp byte[bootloader16_variable_sector], 10
-	je bootloader16_loader_run
+	je bootloader16_loader16_run
 
 	jmp .loop
 
-bootloader16_loader_run:
-	;jmp word 0x0000:0x8000
-	jmp $
+bootloader16_loader16_run:
+	jmp word 0x0000:0x8000
 
 bootloader16_error:
 	mov ax, 0xB800
