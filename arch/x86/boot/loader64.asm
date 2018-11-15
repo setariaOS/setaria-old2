@@ -3,6 +3,9 @@
 section .text
 
 loader16_start:
+	mov ax, 0x0800
+	mov ds, ax
+	mov es, ax
 
 loader16_a20_enable:
 	mov ax, 0x2401
