@@ -207,7 +207,7 @@ def do_action5():
 
 	if firmware == "BIOS":
 		if platform == "x86-64":
-			desc = "qemu-system-x86_64 -L . -m 64 -fda ./setaria.img -localtime -M pc"
+			desc = "qemu-system-x86_64 -L . -m 64 -fda ./setaria.img -M pc"
 
 			f = open("./run.bat", "w")
 			f.write(desc)
